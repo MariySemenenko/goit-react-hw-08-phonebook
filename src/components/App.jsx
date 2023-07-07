@@ -10,6 +10,7 @@ import {
 } from 'redux/contacts/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
+import HomePage from '../pages/HomePages'
 
 export const App = () => {
   //додаю контакти з файлу  selectors.js
@@ -24,7 +25,7 @@ export const App = () => {
 
   //  console.log(contacts)
   return (
-   
+   <>
     <Div>
       <ContactForm />
       {isLoading && <p>Loading</p>}
@@ -33,5 +34,7 @@ export const App = () => {
       <Filter />
       {contacts.length ? <ContactList /> : <p>No contacts in phonebook</p>}
     </Div>
+    <HomePage />
+    </>
   );
 };
