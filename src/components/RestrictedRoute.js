@@ -1,3 +1,6 @@
+// для обмеження доступу до маршрутів в додатку
+//component для зареєстрованого користувача
+//redirectTo перенаправляє на авторизацію
 
 import { useAuth } from 'hooks/useAuth';
 import { Navigate } from 'react-router-dom';
@@ -10,5 +13,6 @@ import { Navigate } from 'react-router-dom';
 export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
   const { isLoggedIn } = useAuth();
 
+  //перевіряю чи користувач має авторизацію
   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };

@@ -1,3 +1,5 @@
+// стану авторизації користувача
+
 import { useSelector } from 'react-redux';
 import {
     selectUser,
@@ -17,4 +19,3 @@ export const useAuth = () => {
     user,
   };
 };
-//далі імпортую хук у компонент Navigation
