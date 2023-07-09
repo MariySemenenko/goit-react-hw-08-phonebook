@@ -1,40 +1,57 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import { Div, H2 } from './StyledApp.styled';
-import {
-  selectContacts,
-  selectError,
-  selectLoading,
-} from 'redux/contacts/selectors';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/contacts/operations';
-import HomePage from '../pages/HomePages'
+ import { useEffect, lazy } from 'react';//lazy для завантаження компонентів лише при потребі
+ import { useDispatch } from 'react-redux';
+ import { Route, Routes } from 'react-router-dom';
+ import { Layout } from '../components/Layout/Layout';
+import { PrivateRoute } from '../components/PrivateRoute';// перенаправляє користувача на вказаний маршрут, якщо він не авторизований
+ import { RestrictedRoute } from './RestrictedRoute';//перенаправляє користувача на вказаний маршрут, якщо він вже авторизований
+ import { refreshUser } from 'redux/auth/operations';
+ import { useAuth } from 'hooks/useAuth';
+//import HomePage from '../pages/HomePages'
+
+
+const HomePage = lazy(() => import('../pages/HomePages'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
+
 
 export const App = () => {
-  //додаю контакти з файлу  selectors.js
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+//викликаю refreshUser який оновлює дані користувача
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  //  console.log(contacts)
-  return (
-   <>
-    <Div>
-      <ContactForm />
-      {isLoading && <p>Loading</p>}
-      {error && <p>{error}</p>}
-      <H2>Contacts {contacts.length}</H2>
-      <Filter />
-      {contacts.length ? <ContactList /> : <p>No contacts in phonebook</p>}
-    </Div>
-    <HomePage />
-    </>
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
 };
+
+

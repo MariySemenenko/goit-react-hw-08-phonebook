@@ -5,6 +5,7 @@ import {
     selectIsRefreshing,
 } from 'redux/auth/selectors';
 
+//дістаю дані з селектора
 export const useAuth = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
