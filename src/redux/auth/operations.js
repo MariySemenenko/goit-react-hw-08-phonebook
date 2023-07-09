@@ -1,3 +1,5 @@
+//тут живе наш бекенд
+
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -10,6 +12,7 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+//ця функція для реєстрації RegisterForm
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {

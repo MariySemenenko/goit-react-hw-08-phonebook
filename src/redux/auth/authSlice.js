@@ -3,7 +3,7 @@ import { logOut, login, refreshUser, register } from './operations';
 
 const initialState = {
   user: { name: null, email: null },
-  token: null,
+  token: null,//JWT (JSON Web Token) наша перепустка на сервер
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
