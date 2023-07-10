@@ -26,6 +26,7 @@ export const register = createAsyncThunk(
   }
 );
 
+////ця функція для входу LoginForm
 export const login = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {

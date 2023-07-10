@@ -12,8 +12,8 @@ import {
   selectLoading,
 } from 'redux/contacts/selectors';
 import { ContactList } from 'components/ContactList/ContactList';
-import { AppBar } from 'components/AppBar/AppBar';
-import HomePage from './HomePages';
+//import { AppBar } from 'components/AppBar/AppBar';
+//import HomePage from './HomePages';
 
 
 export default function Contacts() {
@@ -33,7 +33,7 @@ export default function Contacts() {
     <>
       <>
         <Div>
-          <AppBar />
+          {/* <AppBar /> */}
           <ContactForm />
           {isLoading && <p>Loading</p>}
           {error && <p>{error}</p>}
@@ -41,7 +41,7 @@ export default function Contacts() {
           <Filter />
           {contacts.length ? <ContactList /> : <p>No contacts in phonebook</p>}
         </Div>
-        <HomePage />
+        {/* <HomePage /> */}
       </>
     </>
   );

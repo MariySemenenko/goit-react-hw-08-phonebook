@@ -1,46 +1,63 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 
 import { Form } from '../StyledApp.styled';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { addContact } from 'redux/contacts/operations';
+// import { selectContacts } from 'redux/contacts/selectors';
+import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
-import { selectContacts } from 'redux/contacts/selectors';
-
 export const ContactForm = () => {
-  const [data, setData] = useState({ name: '', phone: '' });
-  //тут зберігається імя та номер
-  const contacts = useSelector(selectContacts);
+
   const dispatch = useDispatch();
-  const handleChange = ({ currentTarget }) => {
-    const { name, value } = currentTarget; //отримую доступ до значення поля за допомогою currentTarget
-    setData(prevData => ({ ...prevData, [name]: value })); //оновлюю ключ у стейті за допомогою динамічного ключа
-  };
 
-  //роблю перевірку чи збігається номер та імя
   const handleSubmit = e => {
-    const { name, phone } = data;
     e.preventDefault();
-    if (
-      contacts.find(
-        contact =>
-          contact.name.toLowerCase() === name.toLowerCase() ||
-          contact.phone === phone
-      )
-    ) {
-      //reset
-      setData({ name: '', phone: '' });
-      return alert(`${name} or ${phone} is already in contacts`);
+    const form = e.currentTarget;
+    const text = form.elements.text.value;
+    if (text !== '') {
+      dispatch(addContact(text));
+      form.reset();
+      return;
     }
-
-    //тут створюється новий об'єкт newContact
-    const newContact = {
-      ...data,
-    };
-    //дістаю метод додавання із contactSlice
-    dispatch(addContact(newContact));
-    setData({ name: '', phone: '' });
+    alert('Contacts cannot be empty. Enter some text!');
   };
 
-  const { name, phone } = data;
+
+  // const [data, setData] = useState({ name: '', phone: '' });
+  // //тут зберігається імя та номер
+  // const contacts = useSelector(selectContacts);
+  // const dispatch = useDispatch();
+  // const handleChange = ({ currentTarget }) => {
+  //   const { name, value } = currentTarget; //отримую доступ до значення поля за допомогою currentTarget
+  //   setData(prevData => ({ ...prevData, [name]: value })); //оновлюю ключ у стейті за допомогою динамічного ключа
+  // };
+
+  // //роблю перевірку чи збігається номер та імя
+  // const handleSubmit = e => {
+  //   const { name, phone } = data;
+  //   e.preventDefault();
+  //   if (
+  //     contacts.find(
+  //       contact =>
+  //         contact.name.toLowerCase() === name.toLowerCase() ||
+  //         contact.phone === phone
+  //     )
+  //   ) {
+  //     //reset
+  //     setData({ name: '', phone: '' });
+  //     return alert(`${name} or ${phone} is already in contacts`);
+  //   }
+
+  //   //тут створюється новий об'єкт newContact
+  //   const newContact = {
+  //     ...data,
+  //   };
+  //   //дістаю метод додавання із contactSlice
+  //   dispatch(addContact(newContact));
+  //   setData({ name: '', phone: '' });
+  //  };
+
+  // const { name, phone } = data;
 
   return (
     <>
@@ -76,3 +93,4 @@ export const ContactForm = () => {
     </>
   );
 };
+//////////////////////////////////////////

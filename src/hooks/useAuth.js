@@ -9,10 +9,10 @@ import {
 
 //дістаю дані з селектора
 export const useAuth = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);//AppBar
   const isRefreshing = useSelector(selectIsRefreshing);
   const user = useSelector(selectUser);
-
+// console.log(user, 'qwe')
   return {
     isLoggedIn,
     isRefreshing,
