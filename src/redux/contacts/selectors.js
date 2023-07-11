@@ -10,7 +10,7 @@ export const selectFilter = ({ filter }) => filter;
 export const selectLoading = ({contacts: {isLoading}}) => isLoading;
 export const selectError = ({contacts: {error}}) => error;
 
-//створюю масив відфільтрованних контактів та передаю у ContactList
+//створюю масив відфільтрованних контактів та передаю у ContactList та ContactForm
 export const selectVisibleContacts = ({ contacts: { items }, filter }) => {
   if (!filter) {
     return items;
