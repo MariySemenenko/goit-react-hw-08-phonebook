@@ -6,8 +6,10 @@ import { setFilter } from 'redux/contacts/filterSlice';
 //тут виконується пошук імені в телефонній книзі
 
 export const Filter = () => {
+
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
+  
   return (
     <Label>
       <label>

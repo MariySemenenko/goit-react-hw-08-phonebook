@@ -15,13 +15,16 @@ export const ContactForm = () => {
     const number = form.elements.number.value;
 
     const existingContact = visibleContacts.find(
+      
       contact =>
         contact.name.toLowerCase() === name.toLowerCase() ||
         contact.number === number
     );
 
     if (existingContact) {
+      
       alert(`${name} or ${number} is already in contacts`);
+      form.reset();
     } else {
       dispatch(addContact({ name, number }));
       form.reset();
