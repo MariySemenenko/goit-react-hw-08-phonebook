@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet';// для додавання метатегу title 
+import { Helmet} from 'react-helmet-async';// для додавання метатегу title 
 import { LoginForm } from 'components/loginForm/LoginForm';
 
 export default function Login() {

@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet';//встановлюю заголовки сторінки
+import { Helmet} from 'react-helmet-async';//встановлюю заголовки сторінки
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 
 export default function Register() {

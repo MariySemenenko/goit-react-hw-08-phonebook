@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logOut, login, refreshUser, register } from './operations';
 
-const initialState = {
+const initialState = {//в браузері(redux actions)
   user: { name: null, email: null },
   token: null,//JWT (JSON Web Token) наша перепустка на сервер
   isLoggedIn: false,
@@ -19,8 +19,8 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     [login.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.user = action.payload.user;//зберігаю інформацію про користувача
+      state.token = action.payload.token;//зберігаю токен
       state.isLoggedIn = true;
     },
     [logOut.fulfilled](state) {

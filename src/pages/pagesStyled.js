@@ -1,15 +1,19 @@
 import styled from '@emotion/styled';
 
 export const H1 = styled.h1`
-  padding-left: 500px;
   color: lightslategrey;
-  margin: 0;
+  text-align: center;
+  font-size: 24px;
 `;
 
 export const H2 = styled.h1`
-color: lightslategrey;
-font-size: 30px;
-padding-left: 450px;
-margin: 0;
-padding-bottom: 5px;
-`
+  color: lightslategrey;
+  text-align: center;
+  font-size: 18px;
+`;
+export const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

@@ -1,19 +1,29 @@
 //сторінка для зареєстрованного користувача
 import { NavLink } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
+import styled from '@emotion/styled';
+
+
+const StyledLink = styled(NavLink)`
+  color: lightslategrey;
+
+  &.active {
+    color: orange;
+  }
+`;
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
     <nav>
-      <NavLink to="/">
+      <StyledLink style={{ fontSize: '20px', textDecoration: 'none' }} to="/">
         Home
-      </NavLink>
+      </StyledLink>
       {isLoggedIn && (
-        <NavLink to="/contacts">
+        <StyledLink to="/contacts">
           Contacts
-        </NavLink>
+        </StyledLink>
       )}
     </nav>
   );

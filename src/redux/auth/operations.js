@@ -1,5 +1,5 @@
 //тут живе наш бекенд
-
+//далі переносю операції у слайс та селектори
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
