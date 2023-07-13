@@ -14,6 +14,7 @@ const clearAuthHeader = () => {
 
 //ця функція для реєстрації RegisterForm
 export const register = createAsyncThunk(
+  //console.log(register)
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
