@@ -4,12 +4,15 @@ export const H1 = styled.h1`
   color: lightslategrey;
   text-align: center;
   font-size: 24px;
+  margin: 0;
 `;
 
 export const H2 = styled.h1`
   color: lightslategrey;
   text-align: center;
   font-size: 18px;
+  
+
 `;
 export const Div = styled.div`
   display: flex;

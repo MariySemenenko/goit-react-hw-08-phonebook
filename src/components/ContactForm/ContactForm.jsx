@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { selectVisibleContacts } from 'redux/contacts/selectors';
 
-
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const visibleContacts = useSelector(selectVisibleContacts);
@@ -15,14 +14,12 @@ export const ContactForm = () => {
     const number = form.elements.number.value;
 
     const existingContact = visibleContacts.find(
-      
       contact =>
         contact.name.toLowerCase() === name.toLowerCase() ||
         contact.number === number
     );
 
     if (existingContact) {
-      
       alert(`${name} or ${number} is already in contacts`);
       form.reset();
     } else {
@@ -61,4 +58,3 @@ export const ContactForm = () => {
     </>
   );
 };
-//////////////////////////////////////////

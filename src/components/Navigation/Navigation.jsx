@@ -21,7 +21,7 @@ export const Navigation = () => {
         Home
       </StyledLink>
       {isLoggedIn && (
-        <StyledLink to="/contacts">
+        <StyledLink style={{ fontSize: '20px', paddingLeft: '20px' }} to="/contacts">
           Contacts
         </StyledLink>
       )}

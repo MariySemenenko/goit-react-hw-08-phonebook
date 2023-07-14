@@ -14,10 +14,11 @@ const clearAuthHeader = () => {
 
 //ця функція для реєстрації RegisterForm
 export const register = createAsyncThunk(
-  //console.log(register)
+ 
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
+      //console.log('Register');
       const { data } = await axios.post('/users/signup', credentials);
       setAuthHeader(data.token);
       return data;
